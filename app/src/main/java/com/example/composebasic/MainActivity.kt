@@ -11,7 +11,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -28,6 +30,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.composebasic.ui.theme.ComposeBasicTheme
 
@@ -50,11 +53,37 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-    var x by remember { mutableStateOf(0) }
+    //var x by remember { mutableStateOf(0) }
+    var x = remember { mutableStateOf(0) }
     Column {
-       Text(text =x.toString(),
+        Row {
+            Button(onClick = {
+                x.value = 0
+            }) {
+                Text("歸零")
+                Image(
+                    painter = painterResource(id = R.drawable.aaaa),
+                    contentDescription = "棉花糖",
+                    modifier = modifier.size(40.dp)
+                )
+            }
+            Button(onClick = {
+                x.value = x.value*2
+            }) {
+                Text("*2")
+                Image(
+                    painter = painterResource(id = R.drawable.aaaa),
+                    contentDescription = "棉花糖",
+                    modifier = modifier.size(40.dp)
+                )
+            }
+        }
+       /*Text(text =x.toString(), 用by的寫法
            fontSize =50.sp,
-           modifier = modifier.clickable { x++ },)
+           modifier = modifier.clickable { x++ },)*/
+        Text(text =x.value.toString(),
+            fontSize =50.sp,
+            modifier = modifier.clickable { x.value++ },)
 
         Row {
             Text(
