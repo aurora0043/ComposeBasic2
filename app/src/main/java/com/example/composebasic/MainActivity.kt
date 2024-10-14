@@ -52,7 +52,9 @@ class MainActivity : ComponentActivity() {
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     var x by remember { mutableStateOf(0) }
     Column {
-       Text(text =x.toString(),fontSize =50.sp, modifier = modifier)
+       Text(text =x.toString(),
+           fontSize =50.sp,
+           modifier = modifier.clickable { x++ },)
 
         Row {
             Text(
@@ -60,7 +62,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
                 color = Color.Blue,
                 fontSize = 30.sp,
                 fontFamily = FontFamily(Font(R.font.hand)),
-                modifier = Modifier.clickable { x++ },
+
             )
             Image(
                 painter = painterResource(id = R.drawable.ccc),
